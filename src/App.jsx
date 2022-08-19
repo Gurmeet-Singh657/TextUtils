@@ -22,12 +22,23 @@ function App() {
       setalert(null)
     },2000)
   }
-  const toggleMode=()=>{
+  const RemoveClass=()=>{
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-danger')
+  }
+  const toggleMode=(cls)=>{
+    RemoveClass();
+    document.body.classList.add('bg-'+cls)
     if(mode==='light')
     {
       document.body.style.backgroundColor='grey'
       setMode('dark')
       showAlert('Dark Mode has been enabled','success')
+
       // document.title="TextUtils-Dark Mode"
       // setInterval(()=>{
       //   document.title="TextUtils is Amazing Mode";
