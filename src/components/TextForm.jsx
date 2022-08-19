@@ -28,9 +28,7 @@ export default function TextForm(props) {
   }
   
   const handleCopy=()=>{
-    var text=document.getElementById('myBox');
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    navigator.clipboard.writeText(text);
     props.showAlert("Text Copied to Clipboard",'success')
   }
   // text="Hi Gurmeet !!" -> Wrong way to change the state
@@ -50,8 +48,8 @@ export default function TextForm(props) {
     </div>
     <div className="conatiner my-3" style={{color:props.mode==='dark'?'white':'black'}}>
       <h1>Your text Summary</h1>
-      <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} and {text.length} characters</p>
-      <p>{ (0.008*text.split(" ").filter((element)=>{return element.length!==0}).length).toFixed(2)} minutes read</p>
+      <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} and {text.length} characters</p>
+      <p>{ (0.008*text.split(/\s+/).filter((element)=>{return element.length!==0}).length).toFixed(2)} minutes read</p>
       <h2>Preview</h2>
       <p>{text.length>0?text:"Nothing to Preview!"}</p>
     </div>
